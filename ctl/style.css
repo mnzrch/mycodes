@@ -1,8 +1,5 @@
 /* styles... */
-body{
-    background: rgb(0, 255, 13);
-    overflow-y: scroll;
-}
+
 .custom-tag-list{
     position: fixed;
     display: block;
