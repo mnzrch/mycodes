@@ -292,10 +292,10 @@ input{
 h1, h2, h3, h4, h5, h6 {
 color: black;
 }
-  .toparrow {
+.toparrow {
     position: relative;
     float: right;
-  }
+}
 .custom-tag-list{
     position: fixed;
     display: block;
