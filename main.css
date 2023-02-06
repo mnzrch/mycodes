@@ -292,38 +292,9 @@ input{
 h1, h2, h3, h4, h5, h6 {
 color: black;
 }
-  #toparrow {
+  .toparrow {
+    position: relative;
     float: right;
-    padding: 10px 0px 0px 0px;
-    overflow: hidden;
-    color: #00ff37;
-    cursor: pointer;
-    border-radius: 50% 50% 10% 10%;
-    transition: .3s;
-  }
-  #toparrow:hover {
-    color: black;
-  }
-  #toparrow .text {
-    position: absolute;
-    font-weight: bold;
-    text-align: center;
-    width: 32px;
-    height: 22px;
-    margin: 0px 0px 0px -20px;
-    -webkit-text-stroke: thick;
-  }
-  #toparrow .sym {
-    position: absolute;
-    font-weight: bold;
-    text-align: center;
-    width: 22px;
-    height: 21px;
-    margin: -6px 0px 0px 2px;
-    padding: 1px 0px 0px 0px;
-    border-radius: 50% 50% 10% 10%;
-    -webkit-text-stroke: thick;
-    transform: matrix(1.5, 0, 0, 1.5, 0, 0);
   }
 .custom-tag-list{
     position: fixed;
