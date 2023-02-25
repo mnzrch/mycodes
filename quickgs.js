@@ -15,6 +15,7 @@ if (getCoki('qget_started') != 1) {
   document.write(qget_started);
   let closbox = tag('div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > con > span');
   setCSS('cursor', 'pointer', closbox); setAttr('title', 'Click to check/uncheck', closbox);
+  clog(closbox);
   click(function () {
     if (getAttr('value', closbox) == 1) { setCoki('qget_started', '1', { 'max-age': '31104000' }) }
     tag('div.qget_started').remove();
