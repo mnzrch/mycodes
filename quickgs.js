@@ -16,7 +16,7 @@ if (getCoki('qget_started') != 1) {
 }
 click(function () {
   let closbox = tag('div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > con > span');
-  setCSS('corsor', 'pointer'); setAttr('title', 'Click to check/uncheck')
+  setCSS('corsor', 'pointer', closbox); setAttr('title', 'Click to check/uncheck', closbox);
   if (getAttr('value', closbox) == 1) { setCoki('qget_started', '1', { 'max-age': '31104000' }) }
   tag('div.qget_started').remove();
 }, tag('div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > ctrl > span'));
