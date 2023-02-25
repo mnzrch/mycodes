@@ -15,6 +15,6 @@ if (getCoki('qget_started') != 1) {
   document.write(qget_started);
 }
 click(function () {
-  if (getAttr('value', $(' div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > con > span')) == 1) { setCoki('qget_started', '1', { 'max-age': '31104000' }) }
-  $('div.qget_started').remove();
-}, $('div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > ctrl > span'));
+  if (getAttr('value', tag(' div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > con > span')) == 1) { setCoki('qget_started', '1', { 'max-age': '31104000' }) }
+  tag('div.qget_started').remove();
+}, tag('div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > ctrl > span'));
