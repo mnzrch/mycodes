@@ -1,4 +1,4 @@
-let qget_started = `<style>.qget_started {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+let qget_started = `<style>.qget_started {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index: 9999;}
 </style><div class="qget_started lightboxT w-fitcon h-fitcon">
   <header class="lightele w-wfa">Quick Get Started...</header>
   <div class="con lightboxLG w-fitcon ta-center">
