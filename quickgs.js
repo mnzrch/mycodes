@@ -13,10 +13,10 @@ let qget_started = `<style>.qget_started {position: fixed;top: 50%;left: 50%;tra
 </div>`;
 if (getCoki('qget_started') != 1) {
   document.write(qget_started);
-}
-click(function () {
   let closbox = tag('div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > con > span');
   setCSS('corsor', 'pointer', closbox); setAttr('title', 'Click to check/uncheck', closbox);
-  if (getAttr('value', closbox) == 1) { setCoki('qget_started', '1', { 'max-age': '31104000' }) }
-  tag('div.qget_started').remove();
-}, tag('div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > ctrl > span'));
+  click(function () {
+    if (getAttr('value', closbox) == 1) { setCoki('qget_started', '1', { 'max-age': '31104000' }) }
+    tag('div.qget_started').remove();
+  }, tag('div.qget_started.lightboxT.w-fitcon.h-fitcon > footer > ctrl > span'));
+}
