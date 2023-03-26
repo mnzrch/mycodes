@@ -64,7 +64,7 @@ function quickguid() {
         <div class="lll-corses"></div>`
         , 'div'); setAttr('name', 'Quick Guider for Getting strat Letslearnlights', guider);
     setAttr('class', 'vp-center lightele dragable windowtype bs-hidden', guider); setCSS('transition', '0s', guider);
-    body.appendChild(guider);
+    document.body.appendChild(guider);
     lcources.forEach((i) => {
         let xcrs = `<style>
             .lll-corses>a:nth-child(`+ (i['index']*2) + `):hover {
