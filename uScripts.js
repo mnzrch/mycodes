@@ -60,7 +60,7 @@ function quickguid() {
              <linebreak></linebreak>
              Read full lesson and chose next lesson by clicking on newer tab as shown in picture...
         </h2>
-        <img src="./npost.png" alt="New post chose helper pic" class="w-wfa h-auto lightboxDM">
+        <img src="https://mnzrch.github.io/mycodes/npost.png" alt="New post chose helper pic" class="w-wfa h-auto lightboxDM">
         <div class="lll-corses"></div>`
         , 'div'); setAttr('name', 'Quick Guider for Getting strat Letslearnlights', guider);
     setAttr('class', 'vp-center lightele dragable windowtype bs-hidden', guider); setCSS('transition', '0s', guider);
