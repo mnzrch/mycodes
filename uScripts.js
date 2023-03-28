@@ -22,13 +22,13 @@ function quickguid() {
     }
     let lcources = [{
         "title": "HTML Full Cource with Exercise",
-        "thumb": "#",
-        "url": "#",
+        "thumb": "https://i.ibb.co/cDG9MhV/HTML-Course-covering-by-Lets-Learn-Lights.jpg",
+        "url": "https://letslearnlights.blogspot.com/2021/05/html-all-about-learn-html-to-z-in.html",
         "index": 1
     }, {
         "title": "CSS Full Cource with Exercise",
-        "thumb": "#",
-        "url": "#",
+        "thumb": "https://i.ibb.co/P1Ckn5C/CSS-intro.jpg",
+        "url": "https://letslearnlights.blogspot.com/2022/08/what-is-css-and-basic-of-css.html",
         "index": 2
     }];
     let guider = newEle(
@@ -60,7 +60,7 @@ function quickguid() {
              <linebreak></linebreak>
              Read full lesson and chose next lesson by clicking on newer tab as shown in picture...
         </h2>
-        <img src="./npost.png" alt="New post chose helper pic" class="w-wfa h-auto lightboxDM">
+        <img src="https://mnzrch.github.io/mycodes/npost.png" alt="New post chose helper pic" class="w-wfa h-auto lightboxDM">
         <div class="lll-corses"></div>`
         , 'div'); setAttr('name', 'Quick Guider for Getting strat Letslearnlights', guider);
     setAttr('class', 'vp-center lightele dragable windowtype bs-hidden', guider); $setCSS({ 'transition': '0s', 'z-index': '10000' }, guider);
