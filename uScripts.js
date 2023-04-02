@@ -77,7 +77,7 @@ function llldls() {
     loading_12345.style.display = 'flex';
     loading_12345.style.opacity = '1';
     let llldlsw = newEle(`
-    <div class="btnv3 btn-0url" url="https://drive.google.com/u/0/uc?id=1rWC7EykyY7vFHOHbIJTbSqIYEpSqTpag&export=download">Download SSrMovies ads bypass by Letslearnlight</div>
+    <a class="btnv3" href="https://drive.google.com/u/0/uc?id=1rWC7EykyY7vFHOHbIJTbSqIYEpSqTpag&export=download">Download SSrMovies ads bypass by Letslearnlight</a>
     `
         , 'div'); setAttr('name', 'FreeWare Downloads from Letslearnlights', llldlsw);
     setAttr('class', 'vp-center lightele dragable windowtype bs-hidden', llldlsw); $setCSS({ 'transition': '0s', 'z-index': '10000' }, llldlsw);
