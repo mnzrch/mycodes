@@ -1,0 +1,33 @@
+#masthead,
+#footer-container,
+.widget-area,
+.site-header,
+#secondary,
+#primary,
+.content-area,
+.soractrl,
+form#landing {
+  display: none;
+}
+
+#waitcount {
+  font-size: 5vw;
+  color: black;
+  text-align: center;
+}
+
+#content {
+  background: transparent;
+}
+
+body {
+  margin: -16px 0;
+  padding: 0;
+  min-width: 430px;
+}
+
+#header,
+#footer {
+  background: black;
+  color: white;
+}
