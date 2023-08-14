@@ -5,8 +5,8 @@ let probar = document.querySelector('#s');
 let protxt = document.querySelector('#proTxt');
 let vid = document.querySelector('#vid');
 let vidb = document.querySelector('#vidb');
-let chklnk = 'http://localhost/www/mcapies/ffmpeg?process=';
-let prolnk = 'http://localhost/www/mcapies/ffmpeg/conversion?';
+let chklnk = 'http://mcapies.orgfree.com/ffmpeg?process=';
+let prolnk = 'http://mcapies.orgfree.com/ffmpeg/conversion?';
 let dlnk = '';
 let vlnk;
 async function pro(x) {
