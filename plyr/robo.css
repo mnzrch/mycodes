@@ -1,0 +1,119 @@
+xvideoplayer {
+    font-size: 5em;
+}
+
+.noevent {
+    pointer-events: none;
+}
+
+xvideoplayer>img {
+    filter: invert(70%);
+}
+
+xvideoplayer>#ctrls {
+    position: absolute;
+    height: min-content;
+    width: calc(100% - 0.8em);
+    font-size: 0.3em;
+    padding: 0.4em;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    z-index: 4;
+}
+
+xvideoplayer>#ctrls>* {
+    cursor: pointer;
+    margin-right: 0.4em;
+}
+
+xvideoplayer>#ctrls>scnd {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+
+xvideoplayer>#ctrls>scnd>* {
+    margin-left: 0.4em;
+}
+
+xvideoplayer>#ctrls>scnd>vol {
+    position: relative;
+    height: 1em;
+    width: 5em;
+}
+
+
+xvideoplayer>#ctrls>scnd>vol::before {
+    margin-left: -1.3em;
+}
+
+xvideoplayer>#ctrls>scnd>vol>rng {
+    position: absolute;
+    display: block;
+    height: inherit;
+    width: 50%;
+    top: 0;
+    background: red;
+}
+
+xvideoplayer>waiting>* {
+    color: white;
+    background: #ff00;
+}
+
+xvideoplayer>waiting {
+    position: absolute;
+    height: calc(100% - 0.8em);
+    width: calc(100% - 0.8em);
+    font-size: 0.5em;
+    padding: 0.4em;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    background: rgb(0 0 0 / 65%);
+    pointer-events: none;
+    flex-direction: column;
+}
+
+xvideoplayer>#ctrls>stop {
+    height: auto;
+    width: 2px;
+    background: red;
+    cursor: none;
+}
+
+#xvideoplayer {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    background: #ff00;
+    z-index: 2;
+}
+
+#vidxplyrOL {
+    position: absolute;
+    height: inherit;
+    width: 100%;
+    display: flex;
+    z-index: 3;
+    background: #ff00;
+}
+
+#vidxplyrOL>* {
+    display: flex;
+    width: 33.33%;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-wrap: wrap;
+    align-content: center;
+    background: #ff00;
+}
+
+#vidxplyrOL>*>#pvbtn {
+    cursor: pointer;
+    background: #ff00;
+}
