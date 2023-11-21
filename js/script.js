@@ -1,6 +1,6 @@
 ///////////
-let dbs, homedata, picdata, pflisec, cpost = 0, deskE = id('desktopDiv'), dbody = $('body'), authorL = '', Lend = '=s128', homL, treL, trende = $('div.maincan>trending'), dind, vpost = urlSP('browse'), vpic = urlSP('search'), blogo = 'https://yt3.ggpht.com/'; slEls = $$('searcheng>div>setting>div>length>div'), fapi = 'https://api.allorigins.win/raw?url=', stEls = $$('searcheng>div>setting>div>dur>div');
-pflisec = '';fapi = 'https://mcapies.orgfree.com/raw/?url=';
+let dbs, homedata, picdata, pflisec, cpost = 0, dbody = $('body'), authorL = '', Lend = '=s128', homL, treL, trende = $('div.maincan>trending'), dind, vpost = urlSP('browse'), vpic = urlSP('search'), blogo = 'https://yt3.ggpht.com/'; slEls = $$('searcheng>div>setting>div>length>div'), fapi = 'https://api.allorigins.win/raw?url=', stEls = $$('searcheng>div>setting>div>dur>div');
+pflisec = ''; fapi = 'https://mcapies.orgfree.com/raw/?url=';
 let ssetq = {
     'nill': '',
     'fm': 'sp=EgIYAQ%253D%253D&', //u 4m
@@ -115,66 +115,119 @@ function togglekw() {
         $ss('display', 'block', x);
     }
 }
-$res(() => { thumbRan(); }, window);
+$res(() => { thumbRan(); if (!isWinDes) { $ss('margin-top', '0px', $('.maincan', id('mobileDiv'))); $ss('margin-top', '0px', $('aside', id('mobileDiv'))); } else { stickyfun(id('desktopDiv')); } }, window);
 homedata1 = '../ytdata/yt trending.html';
 homedata = '../ytdata/yth 3.html';
-homedata = fapi + $euc('https://www.youtube.com');
-function fdlwp(l, f, m) {
-    if (fdlwp.controller) {
-        fdlwp.controller.abort();
-    }
+homedata = fapi + 'https://www.youtube.com';
+function fdlwp(l, f, m, t) {
+    $sk('creq', 'fdlwp(`' + l + '`, ' + f.name + ', `' + m + '`,`' + t + '`)', { 'expiry': 99999999999 });
+    if (fdlwp.controller) { fdlwp.controller.abort(); }
     fdlwp.controller = new AbortController();
     $ss('display', 'none', $('#dlpi1'));
     $ss('display', 'block', $('#initial'));
-    fetch(l, { signal: fdlwp.controller.signal })
-        .then(x => {
-            if (!x.ok) {
-                $ss('display', 'block', $('#dlpi1'));
-                $ss('display', 'none', $('#initial'));
-                return cusmsg('Unable to Load!', 5000);
+    if (t && t == 'post') {
+        fl = l.split('?')[0];
+        const formData = new FormData();
+        if (l.includes('?')) {
+            qps = l.split('?')[1].split('&');
+            for (p of qps) {
+                [k, v] = p.split('=');
+                formData.append(k, v);
             }
-            y = x.clone();
-            const r = x.body.getReader();
-            $ss('display', 'block', $('#dlpi1'));
-            $ss('width', '0%', $('#dlpi1'));
-            $ss('max-width', '95%', $('#dlpi1'));
-            $ss('display', 'none', $('#initial'));
-            let cb = 0;
-            let aborted = false;
-            function readChunk() {
-                r.read().then(({ done, value }) => {
-                    if (aborted) {
-                        return;
-                    }
-                    if (done) {
-                        if (y && !y.bodyUsed) {
-                            f(y);
-                        } else {
-                            fdlwp(l, f, m);
+        }
+        fetch(fl, { method: 'POST', body: formData, signal: fdlwp.controller.signal })
+            .then(x => {
+                if (!x.ok) {
+                    $ss('display', 'block', $('#dlpi1'));
+                    $ss('display', 'none', $('#initial')); $dk('creq');
+                    return cusmsg('Unable to Load!', 5000);
+
+                }
+                y = x.clone();
+                const r = x.body.getReader();
+                $ss('display', 'block', $('#dlpi1'));
+                $ss('width', '0%', $('#dlpi1'));
+                $ss('max-width', '95%', $('#dlpi1'));
+                $ss('display', 'none', $('#initial'));
+                let cb = 0;
+                let aborted = false;
+                function readChunk() {
+                    r.read().then(({ done, value }) => {
+                        if (aborted) { $dk('creq'); return; }
+                        if (done) {
+                            if (y && !y.bodyUsed) { $dk('creq'); f(y); } else { fdlwp(l, f, m); }
+                            $ss('width', '100%', $('#dlpi1'));
+                            $ss('max-width', '100%', $('#dlpi1'));
+                            return;
                         }
-                        $ss('width', '100%', $('#dlpi1'));
-                        $ss('max-width', '100%', $('#dlpi1'));
-                        return;
-                    }
-                    cb += value.length;
-                    let prg = (cb / 120586240) * 10000 + '%';
-                    $ss('width', prg, $('#dlpi1'));
-                    readChunk();
-                });
-            }
-            fdlwp.controller.signal.addEventListener('abort', () => {
-                aborted = true;
-                r.cancel();
+                        cb += value.length;
+                        let prg = (cb / 120586240) * 10000 + '%';
+                        $ss('width', prg, $('#dlpi1')); readChunk();
+                    }).catch(e => {
+                        if (e.name !== 'AbortError') {
+                            $ss('display', 'block', $('#dlpi1'));
+                            $ss('display', 'none', $('#initial'));
+                            cusmsg(`${m} {${e}}`);
+                        }
+                    });
+                }
+                fdlwp.controller.signal.addEventListener('abort', () => { aborted = true; r.cancel(); });
+                readChunk();
+            })
+            .catch(e => {
+                if (e.name !== 'AbortError') {
+                    $ss('display', 'block', $('#dlpi1'));
+                    $ss('display', 'none', $('#initial'));
+                    cusmsg(`${m} {${e}}`);
+                }
             });
-            readChunk();
-        })
-        .catch(e => {
-            if (e.name !== 'AbortError') {
+    } else {
+        fetch(l, { signal: fdlwp.controller.signal })
+            .then(x => {
+                if (!x.ok) {
+                    $ss('display', 'block', $('#dlpi1'));
+                    $ss('display', 'none', $('#initial'));
+                    return cusmsg('Unable to Load!', 5000);
+                }
+                y = x.clone();
+                const r = x.body.getReader();
                 $ss('display', 'block', $('#dlpi1'));
+                $ss('width', '0%', $('#dlpi1'));
+                $ss('max-width', '95%', $('#dlpi1'));
                 $ss('display', 'none', $('#initial'));
-                cusmsg(`${m} {${e}}`);
-            }
-        });
+                let cb = 0;
+                let aborted = false;
+                function readChunk() {
+                    r.read().then(({ done, value }) => {
+                        if (aborted) { return; }
+                        if (done) {
+                            if (y && !y.bodyUsed) { f(y); } else { fdlwp(l, f, m); }
+                            $ss('width', '100%', $('#dlpi1'));
+                            $ss('max-width', '100%', $('#dlpi1'));
+                            return;
+                        }
+                        cb += value.length;
+                        let prg = (cb / 120586240) * 10000 + '%';
+                        $ss('width', prg, $('#dlpi1')); readChunk();
+                    }).catch(e => {
+                        if (e.name !== 'AbortError') {
+                            $ss('display', 'block', $('#dlpi1'));
+                            $ss('display', 'none', $('#initial'));
+                            cusmsg(`${m} {${e}}`);
+                        }
+                    });
+                }
+                fdlwp.controller.signal.addEventListener('abort', () => { aborted = true; r.cancel(); });
+                readChunk();
+            })
+            .catch(e => {
+                if (e.name !== 'AbortError') {
+                    $ss('display', 'block', $('#dlpi1'));
+                    $ss('display', 'none', $('#initial'));
+                    cusmsg(`${m} {${e}}`);
+                }
+            });
+    }
 } fdlwp.controller = null;
 function assigntrend(x, y) {
     if (cpost == 0) {
@@ -239,9 +292,9 @@ function loadpage(x) {
     m = `Unable to load Home Page data, Please try again...<hr><button onclick="$('#msg-box>i').click();setTimeout(() => { loadpage(); }, 200)" style="border: 1px solid var(--focusclr);border-radius: 5px;padding: 5px;box-shadow: 0px 0px 5px 2px var(--shadowclr);">Click to Try Again</button><hr>`;
     if (x) {
         // fdlwp(homedata1, loadtrend, m);
-        fdlwp(homedata + x, loadtrend, m);
+        fdlwp(homedata + x, loadtrend, m, 'post');
     } else {
-        fdlwp(homedata, loadpaged, m);
+        fdlwp(homedata, loadpaged, m, 'post');
     }
 } loadpage('/feed/trending');
 function loadpost(i) {
@@ -265,7 +318,7 @@ function loadpostd(d) {
 function loadpicd(d) {
     d.text().then(txt => {
         if (txt == 'error') return;
-        x = $ne('div'); html(txt, x); if (treL != true) { loadpage('/feed/trending'); } else if (homL != true) { loadpage(); }
+        x = $ne('div'); html(txt, x); if (homL != true) { loadpage(); }
         y = (Array.from($$('script', x)).find(script => script.textContent.includes('ytInitialData'))).textContent;
         if (y != undefined) {
             s = $ne('script'); s.textContent = y; document.head.appendChild(s); dind = -1;
@@ -323,7 +376,7 @@ function printinfo() {
     <h1>${vi.title}</h1>
     <div><showdes onclick="toggledes()">Show/hide Description</showdes><showkw onclick="togglekw()">Show/hide KeyWords</showkw></div>
     <h3>${vi.shortDescription}</h3>
-    <h4>${vi.keywords}</h4>`; html(info, $('#desktopDiv>div.maincan>content>info')); $ss('display', 'flex', $('#desktopDiv>div.maincan>content>info'));
+    <h4>${vi.keywords}</h4>`; html(info, $('div.maincan>content>info')); $ss('display', 'flex', $('div.maincan>content>info'));
 }
 function printdla() {
     z = ytInitialPlayerResponse.streamingData['adaptiveFormats'];
@@ -344,7 +397,7 @@ function printdl() {
             dbs += `<a target="_blank" class="fas fa-file-video" href="${y.url}" id="dirdl" title="Click to Open/Download Video">
                 <b> ${y.qualityLabel}</b><sup>${x.slice(x.indexOf('/'), x.indexOf(';')).substr(1)}</sup><br><sub>${b}</sub><b>${$fb(y.contentLength)}</b></a>`;
         }
-        if (z.indexOf(y) == z.length - 1 && y.url) { printdla(); } else { html('<i style="font-size: x-large;font-weight: bold;">Unable to download! Please try any other video.</i>', $('download')); }
+        if (z.indexOf(y) == z.length - 1 && y.url) { printdla(); } else { $ss('display', 'block', $('download')); html('<i style="font-size: x-large;font-weight: bold;">Unable to download! Please try any other video.</i>', $('download')); }
     });
 }
 function printRel() {
@@ -483,8 +536,8 @@ function stickyfun(y) {
         }
     }
     if (ybot < 0) {
-        $ss('margin-top', `${mh - (ah - 10)}px`, a);
-        $ss('margin-top', `${mh - (bh - 10)}px`, b);
+        if (ah < wh) { $ss('margin-top', `${yb.top * (-1) + 10 + id('processingE').clientHeight}px`, a); } else { $ss('margin-top', `${mh - (ah - 10)}px`, a); }
+        if (bh < wh) { $ss('margin-top', `${yb.top * (-1) + 10 + id('processingE').clientHeight}px`, b); } else { $ss('margin-top', `${mh - (bh - 10)}px`, b); }
     }
     if (yb.top > 0) {
         $ss('margin-top', `10px`, a);
@@ -499,8 +552,7 @@ $clk(() => { $('#msg-box>i').click(); setTimeout(() => { if ($('searcheng>form>i
 $clk(() => { x = $('searcheng>div>setting>div'); if ($gs('display', x) == 'none') { $ss('display', 'block', x); } else { $ss('display', 'none', x); } }, $('searcheng>div>setting>i'));
 $clk(() => { $('searcheng>div>setting>i').click(); }, $('searcheng>div>setting>div>i'));
 $clk(() => { if (cpost < trends.length) { if (trends.length - cpost <= 9) { assigntrend(trends, trends.length - (cpost + 1)); } else { assigntrend(trends, 9); } } }, id('showmt'));
-$clk(() => { $('body').scrollIntoView({ block: 'start', behavior: 'smooth' }, true); }, id('bcktop'));
-$clk(() => { stickyfun(deskE) }, deskE);
+$clk(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, id('bcktop'));
 $clk(() => {
     if ($('theme').id == 'dtheme') {
         $('theme').id = 'ltheme';
@@ -526,7 +578,7 @@ document.addEventListener('scroll', x => {
     } else {
         $ss('display', 'none', id('bcktop'));
     }
-    stickyfun(deskE);
+    if (isWinDes) { stickyfun(id('desktopDiv')); }
 });
 function weConfig() {
     if ($gk('thememod') == 'true') $('theme').click(); $dk('slEls'); $dk('stEls');
@@ -550,6 +602,4 @@ if (vpost) {
             cusmsg('Data Error: Invalid Request!', 3000); window.history.pushState('', '', '?error');
         }
     }
-} if (vpic) {
-    treL = true; $('searcheng>form>input').value = vpic; $('searcheng>div>search>i').click();
-}
+} if (vpic) { treL = true; $('searcheng>form>input').value = vpic; $('searcheng>div>search>i').click(); }
