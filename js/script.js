@@ -368,9 +368,9 @@ function printinfo() {
             <a href="${mic.ownerProfileUrl}" target="_blank">
                 <img src="${authorL}">
                 <name>${vi.author}</name>
-            </a>
+            </a><hr style="width: 100%;"/>
             <info title="${vi.viewCount} Views | ${ftime(vi.lengthSeconds)} | ${new Date(mic.publishDate).toDateString()}">${$fb(vi.viewCount, ' ').substring(0, $fb(vi.viewCount, ' ').length - 1)} Views | ${ftime(vi.lengthSeconds)} | ${new Date(mic.publishDate).toDateString()}</info>
-            <warn>${w}</warn>
+            <hr style="width: 80%;"/><warn>${w}</warn><hr style="width: 100%;"/>
         </div>
     </header>
     <h1>${vi.title}</h1>
