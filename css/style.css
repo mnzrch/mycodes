@@ -531,6 +531,16 @@ hidden {
     content>info {
         font-size: x-large;
     }
+
+    content>info>header {
+        flex-direction: column;
+        margin: 10px 0 0 0;
+    }
+
+    content>info>header>img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media screen and (max-width: 660px) {
