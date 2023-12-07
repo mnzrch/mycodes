@@ -268,7 +268,7 @@ function loadtrend(d) {
                     "ownerL": "${x.longBylineText.runs[0].navigationEndpoint.commandMetadata.webCommandMetadata.url}"
                 },`;
                     });
-                } if (a.indexOf(y) == a.length - 1) { trends = JSON.parse('[' + trends.slice(0, -1) + ']'); assigntrend(trends, 9); s.remove(); loadpage(); }
+                } if (a.indexOf(y) == $lk(a)) { trends = JSON.parse('[' + trends.slice(0, -1) + ']'); assigntrend(trends, 9); s.remove(); loadpage(); }
             });
         }
     });
@@ -382,10 +382,10 @@ function printdla() {
     z = ytInitialPlayerResponse.streamingData['adaptiveFormats'];
     z.forEach(y => {
         c = y.mimeType;
-        if (y.qualityLabel) { v = 'Muted Video (No sound)'; x = 'fas fa-volume-mute'; a = y.qualityLabel; b = c.slice(c.indexOf('codecs="'), c.length).substr(8); b = b.substring(0, b.length - 1); } else { v = 'Audio'; x = 'fas fa-file-audio'; a = (y.bitrate / 1024).toFixed(0) + 'kbps'; b = c.slice(c.indexOf('codecs="'), c.length).substr(8); b = b.substring(0, b.length - 1); }
+        if (y.qualityLabel) { v = 'Muted Video (No sound)'; x = 'fas fa-volume-mute'; a = y.qualityLabel; b = c.slice(c.indexOf('codecs="'), c.length).substr(8); b = b.substring(0, b.length - 1); } else { v = 'Audio'; x = 'fas fa-file-audio'; a = (y.bitrate / 1024).toFixed(0) + 'kbps'; b = c.slice(c.indexOf('codecs="'), c.length).substr(8); b = b.substring(0, $lk(b)); }
         dbs += `<a target="_blank" class="${x}" href="${y.url}" id="dirdl" title="Click to Open/Download ${v}">
                 <b> ${a}</b><sup>${c.slice(c.indexOf('/'), c.indexOf(';')).substr(1)}</sup><br><sub>${b}</sub><b>${$fb(y.contentLength)}</b></a>`;
-        if (z.indexOf(y) == z.length - 1) { html(dbs, $('download')); $ss('display', 'flex', $('download')); }
+        if (z.indexOf(y) == $lk(z)) { html(dbs, $('download')); $ss('display', 'flex', $('download')); }
     });
 }
 function printdl() {
@@ -397,7 +397,28 @@ function printdl() {
             dbs += `<a target="_blank" class="fas fa-file-video" href="${y.url}" id="dirdl" title="Click to Open/Download Video">
                 <b> ${y.qualityLabel}</b><sup>${x.slice(x.indexOf('/'), x.indexOf(';')).substr(1)}</sup><br><sub>${b}</sub><b>${$fb(y.contentLength)}</b></a>`;
         }
-        if (z.indexOf(y) == z.length - 1 && y.url) { printdla(); } else { $ss('display', 'block', $('download')); html('<i style="font-size: x-large;font-weight: bold;">Unable to download! Please try any other video.</i>', $('download')); }
+        if (z.indexOf(y) == $lk(z) && y.url) {
+            p = $ne('video'); $sa('controls', '', p);
+            s = $ne('setting');
+            n = $ne('<b>Note: </b>This is just a Demo Player. Official Player is comming S00n...', 'news'); $sa('style', 'display: block; background: transparent; margin-top: 10px; font-weight: bold; color: var(--focusclr);', n);
+            z.forEach(y => {
+                x = $ne('Play in ' + y.qualityLabel, 'vq'); $sa('data', y.url, x); s.appendChild(x);
+                if (!p.src) { p.src = y.url; }
+                if (z.indexOf(y) == $lk(z)) {
+                    x = $ne('Download', 'vq'); s.appendChild(x); $clk(() => { $('download').scrollIntoView({ 'behaviour': 'smooth' }); }, x);
+                    html('', $('videoplayer')); $('videoplayer').appendChild(p); $('videoplayer').appendChild(s); $('videoplayer').appendChild(n);
+                    $$('vq', s).forEach(q => {
+                        $clk(() => {
+                            if ($ga('data', q) && p.src != $ga('data', q)) {
+                                let pct = null; if (p.currentTime > 0) { pct = p.currentTime; }
+                                p.src = $ga('data', q); if (pct) { p.currentTime = pct; }
+                            }
+                        }, q);
+                    });
+                }
+            });
+            printdla();
+        } else { $ss('display', 'block', $('download')); html('<i style="font-size: x-large;font-weight: bold;">Unable to download! Please try any other video.</i>', $('download')); }
     });
 }
 function printRel() {
