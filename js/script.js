@@ -388,6 +388,17 @@ function printdla() {
         if (z.indexOf(y) == $lk(z)) { html(dbs, $('download')); $ss('display', 'flex', $('download')); }
     });
 }
+function playQ() {
+    p = $('div.maincan>videoplayer>video');
+    $$('div.maincan>videoplayer>setting>vq').forEach(q => {
+        $clk(() => {
+            if ($ga('data', q) && p.src != $ga('data', q)) {
+                let pct = null; if (p.currentTime > 0) { pct = p.currentTime; }
+                p.src = $ga('data', q); if (pct) { p.currentTime = pct; }
+            } else if (!$ga('data', q)) { $('download').scrollIntoView({ 'behaviour': 'smooth' }); }
+        }, q);
+    });
+}
 function printdl() {
     dbs = '';
     z = ytInitialPlayerResponse.streamingData['formats'];
@@ -405,16 +416,9 @@ function printdl() {
                 x = $ne('Play in ' + y.qualityLabel, 'vq'); $sa('data', y.url, x); s.appendChild(x);
                 if (!p.src) { p.src = y.url; }
                 if (z.indexOf(y) == $lk(z)) {
-                    x = $ne('Download', 'vq'); s.appendChild(x); $clk(() => { $('download').scrollIntoView({ 'behaviour': 'smooth' }); }, x);
+                    x = $ne('Download', 'vq'); s.appendChild(x);
                     html('', $('videoplayer')); $('videoplayer').appendChild(p); $('videoplayer').appendChild(s); $('videoplayer').appendChild(n);
-                    $$('vq', s).forEach(q => {
-                        $clk(() => {
-                            if ($ga('data', q) && p.src != $ga('data', q)) {
-                                let pct = null; if (p.currentTime > 0) { pct = p.currentTime; }
-                                p.src = $ga('data', q); if (pct) { p.currentTime = pct; }
-                            }
-                        }, q);
-                    });
+                    playQ();
                 }
             });
             printdla();
