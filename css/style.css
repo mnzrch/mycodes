@@ -374,6 +374,7 @@ content>info>div>*,
     color: var(--primclr);
     border-radius: 10px;
     box-shadow: 0px 0px 0px 0px var(--secndclr);
+    text-align: center;
     user-select: none;
     -moz-user-select: none;
 }
