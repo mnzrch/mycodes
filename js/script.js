@@ -291,7 +291,7 @@ function loadpaged(d) {
 function loadpage(x) {
     if (x) {
         // fdlwp(homedata1, loadtrend, m);
-        fdlwp(homedata + x, loadtrend, `Unable to load Home Page data, Please try again...<hr><button onclick="$('#msg-box>i').click();setTimeout(() => { loadpage("${x}"); }, 200)" style="border: 1px solid var(--focusclr);border-radius: 5px;padding: 5px;box-shadow: 0px 0px 5px 2px var(--shadowclr);">Click to Try Again</button><hr>`, 'post');
+        fdlwp(homedata + x, loadtrend, `Unable to load Home Page data, Please try again...<hr><button onclick="$('#msg-box>i').click();setTimeout(() => { loadpage('/feed/trending'); }, 200)" style="border: 1px solid var(--focusclr);border-radius: 5px;padding: 5px;box-shadow: 0px 0px 5px 2px var(--shadowclr);">Click to Try Again</button><hr>`, 'post');
     } else {
         fdlwp(homedata, loadpaged, `Unable to load Home Page data, Please try again...<hr><button onclick="$('#msg-box>i').click();setTimeout(() => { loadpage(); }, 200)" style="border: 1px solid var(--focusclr);border-radius: 5px;padding: 5px;box-shadow: 0px 0px 5px 2px var(--shadowclr);">Click to Try Again</button><hr>`, 'post');
     }
