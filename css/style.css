@@ -545,12 +545,36 @@ hidden {
 }
 
 @media screen and (max-width: 660px) {
+    body>header {
+        height: 7vh;
+    }
+
+    header>searcheng {
+        font-size: 4vh;
+    }
+
     .postd {
         width: calc(50% - (1vw + 2px));
     }
 
     content>info {
         font-size: large;
+    }
+
+    header>searcheng>form>input {
+        font-size: 3vh;
+    }
+
+    #PstCB {
+        margin-left: 5px !important;
+    }
+
+    header>searcheng>form>input {
+        padding: 1vh 2px;
+    }
+
+    searcheng>div>search {
+        margin-left: 0;
     }
 }
 
