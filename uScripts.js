@@ -8,9 +8,6 @@ if (smca) {
 `, 'span');
     smca.appendChild(newspn);
     click(quickguid, newspn);
-    let dlwndw = newEle(`Download SSrMovies ads bypass by Letslearnlight`, 'div');setAttr('class','lightboxWS w-fitcon cursor-pointer margin-5 dis-inlineB',dlwndw)
-    smca.appendChild(dlwndw);
-    click(llldls, dlwndw);
 }
 function quickguid() {
     loading_12345.style.display = 'flex';
